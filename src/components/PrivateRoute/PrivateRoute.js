@@ -1,4 +1,5 @@
 import React from 'react';
+import {Spinner} from 'react-bootstrap'
 import { Route, Redirect } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
@@ -14,11 +15,14 @@ import useAuth from '../../hooks/useAuth';
 // PrivateRoute receives <PlaceOrder></PlaceOrder> as a props
 // from component function calling in app.js
 // here children = <PlaceOrder></PlaceOrder>
-// and ...rest = other routes 
+// and ...rest = other props of PrivateRoute is sent to Route through ...rest  
 const PrivateRoute = ({children , ...rest}) => {
 
     // using context API useAuth()
-    const {user} = useAuth();
+    const {user , isLoading } = useAuth();
+    if(isLoading) {
+        return  <Spinner animation ="border" variant="danger" />
+    }
     return (
         <Route
         {...rest}

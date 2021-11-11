@@ -9,6 +9,7 @@ const Login = () => {
 
 const { user , signInUsingGoogle } = useAuth();
 const [error , setError] = useState('');
+const [isLoading , setIsLoading] = useState(true) ; 
 
 const location = useLocation();
 
@@ -29,6 +30,9 @@ const handleGoogleLogin = () =>{
     .catch(error => {
         setError(error.message)
     })
+    .finally(()=>{
+        setIsLoading(false)
+    })
 }
 
     return (
@@ -43,7 +47,7 @@ const handleGoogleLogin = () =>{
                  <input type="submit" value="Submit" />
             </form>
             <br />
-                 <p>New user ? <Link to="/register">Create Account</Link></p>
+                 <p>New user to this website ? <Link to="/register">Create Account</Link></p>
                  <div>-----------  or  ------------</div>
                  <br />
                  <button className="btn-regular" onClick={handleGoogleLogin} >Google Sign In</button>
