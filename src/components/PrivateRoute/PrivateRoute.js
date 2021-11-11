@@ -15,7 +15,11 @@ import useAuth from '../../hooks/useAuth';
 // PrivateRoute receives <PlaceOrder></PlaceOrder> as a props
 // from component function calling in app.js
 // here children = <PlaceOrder></PlaceOrder>
+<<<<<<< HEAD
 // and ...rest = other props of PrivateRoute is sent to Route through ...rest  
+=======
+// and ...rest = other props of PrivateRoute what goes to Route
+>>>>>>> 0522c315ba19115a06edbf599949ac69e2b40393
 const PrivateRoute = ({children , ...rest}) => {
 
     // using context API useAuth()
